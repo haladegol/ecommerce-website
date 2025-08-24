@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+    <style>
+         body {
+
+            background-image: linear-gradient(to top,#EDE8F5 , #7091e6);
+
+
+            background-size: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+            flex-direction: column;
+        }
+        .container {
+            width: 60%; /* Increased width */
+            margin: 20px auto;
+            margin-bottom: 600px;
+            border-radius: 10px;
+            height: 2%;
+        }
+        .progress-bar-container {
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 2px;
+            
+
+        }
+        .progress-bar {
+            background-color:  #3D52a0;;
+            color: black;
+            font-size: 20px;
+            text-align: center;
+            line-height: 40px;
+            width: 0%;
+            transition: width 0.3s ease-in-out;
+            border-radius: 5PX;
+            margin-top:0px;
+            height: 2%;
+            
+        }
+        .order-details {
+            border: 2px solid  #3D52a0;;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .order-phase {
+            margin-bottom: 20px;
+        }
+        .order-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color:  #3D52a0;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .order-btn:hover {
+            background-color: #ede8f5;
+        }
+        .home-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3D52a0;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .home-btn:hover {
+            background-color: #ede8f5;
+        }
+
+
+
+        .homebar2 {
+            background-color: #7091e6;
+            width: 100%; /* Full width */
+            height: 60px; /* Height of the bar */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            padding: 0 20px; /* Padding inside the bar */
+            box-sizing: border-box; /* Includes padding and border in width */
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure it stays above other content */
+            gap: 20px; /* 20px gap between child elements */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        .homebar2 .search-bar {
+            width: 63%; /* Set search bar width to 20% */
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            width: calc(100% - 40px); /* Adjust width to fit icon and padding */
+        }
+
+        .search-bar .search-icon {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4a76e8;
+            color: white;
+        }
+
+        .search-bar .search-icon:hover {
+            background-color: #3557d2;
+        }
+
+        .country-dropdown {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .country-dropdown select {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Icons and logo inside .homebar2 */
+        .menu-icon, .wishlist-icon, .account-icon, .cart-icon, .sign-in-button {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff; /* Make sure the icons are visible on the blue background */
+            margin: 1px;
+        }
+
+        .sign-in-button {
+            background-color: #fff; /* White background for the button */
+            color: #7091e6; /* Blue text color for contrast */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sign-in-button:hover {
+            background-color: #e0e0e0; /* Slightly darker background on hover */
+        }
+
+        #logo {
+            width: 1px; /* Logo size */
+            height: 1px; /* Logo size */
+            
+        }
+
+        .navbar {
+            list-style: none;
+            background-color: #7091e6;
+            height: 50000px;
+            width: 250px; /* Adjusted width for better visibility */
+            position: fixed;
+            top: 60px; /* Start below the homebar2 */
+            left: -250px; /* Hidden off-screen initially */
+            transition: left 0.3s ease;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            
+        }
+
+        .navbar.show {
+            left: 0; /* Slide in from the left */
+        }
+
+        .navbar li {
+            padding: 15px;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 2px;
+            margin-top: 30px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .navbar li:hover {
+            background-color: #ede8f5;
+        }
+
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin: 60px auto 0 auto; /* Start below the homebar2 and center content horizontally */
+            padding: 20px;
+            max-width: 1200px; /* Maximum width for content */
+            width: 100%; /* Ensure content takes full width */
+            box-sizing: border-box;
+            transition: margin-left 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="homebar2">
+        <div class="menu-icon" id="menu-icon">
+            <!-- SVG Hamburger Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </div>
+        <svg id="logo" viewBox="0 0 121.50 121.50" xmlns="http://www.w3.org/2000/svg" fill="#000000"> </svg>
+            <!-- Example SVG Logo Content -->
+            <svg fill="#000000" width="50px" height="50px" viewBox="-1.6 -1.6 35.20 35.20" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: none;
+                        }
+                    </style>
+                </defs>
+                <g id="Layer_2" data-name="Layer 2">
+                    <g id="Layer_1-2" data-name="Layer 1">
+                        <path d="M9.0423,19.1661A2.5212,2.5212,0,1,1,6.5212,16.645H9.0423Z"></path>
+                        <path d="M10.3127,19.1661a2.5212,2.5212,0,0,1,5.0423,0v6.3127a2.5212,2.5212,0,1,1-5.0423,0Z"></path>
+                        <path d="M12.8339,9.0423A2.5212,2.5212,0,1,1,15.355,6.5212V9.0423Z"></path>
+                        <path d="M12.8339,10.3127a2.5212,2.5212,0,0,1,0,5.0423H6.5212a2.5212,2.5212,0,1,1,0-5.0423Z"></path>
+                        <path d="M22.9577,12.8339a2.5212,2.5212,0,1,1,2.5211,2.5211H22.9577Z"></path>
+                        <path d="M21.6873,12.8339a2.5212,2.5212,0,0,1-5.0423,0V6.5212a2.5212,2.5212,0,1,1,5.0423,0Z"></path>
+                        <path d="M19.1661,22.9577a2.5212,2.5212,0,1,1-2.5211,2.5211V22.9577Z"></path>
+                        <path d="M19.1661,21.6873a2.5212,2.5212,0,0,1,0-5.0423h6.3127a2.5212,2.5212,0,1,1,0,5.0423Z"></path>
+                        <rect id="Transparent_Rectangle" data-name="<Transparent Rectangle>" class="cls-1" width="32" height="32"></rect>
+                    </g>
+                </g>
+            
+        </svg>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <div class="search-icon" onclick="goToproductpage()">
+                <!-- SVG Search Icon -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+        </div>
+        <div class="country-dropdown">
+            <select>
+                <option value="us">usa</option>
+                <option value="ca">Canada</option>
+                <option value="mx">Mexico</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        <!-- Add new icons here -->
+        <div class="wishlist-icon" onclick="gotowishlist()">
+            <!-- SVG Heart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+            </svg>
+        </div>
+        <div class="account-icon" onclick="goToaccount()">
+            <!-- SVG Human Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+        <div class="cart-icon" onclick="goTocart()">
+            <!-- SVG Cart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4.2l1.6 3.9h11.6l1.6-3.9H23"></path>
+                <path d="M4.2 6l1.5 9h12.7l1.5-9H4.2z"></path>
+            </svg>
+        </div>
+        <button class="sign-in-button" onclick="goTosignin()">Sign</button>
+        
+    </div>
+
+<script>
+    function goTosignin() {
+       
+        window.location.href = "signup.html";
+    }
+    function goToaccount() {
+            // Redirect to the homepage
+            window.location.href = "userprofile.html";
+        }
+
+function gotowishlist() {
+    window.location.href = "ecommercewishlist.html";
+}
+function goTocart() {
+            // Redirect to the homepage
+            window.location.href = "ecommercecart.html";
+        }
+
+</script>
+<ul class="navbar" id="navbar">
+    <li><a href="ecommercewebsite.html">home</a></li>
+    <div class="threebuttons">
+        <li><a href="signin.html">sign up</a></li>
+        <li><a href="products.html">products</a></li>
+        <li><a href="userprofile.html">account</a></li>
+        <li><a href="support.html">support</a></li>
+        <li><a href="support.html">about us</a></li>
+        <li><a href="ecommerceorders.html">orders</a></li>
+
+    </div>
+</ul>
+
+    <div class="container">
+        <!-- Progress bar container -->
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress">underprogress</div>
+        </div>
+
+        <!-- First container for order phases -->
+        <div class="order-details">
+            <h1>Track Order</h1>
+            <div class="order-phase" id="phaseReceived" style="display: none;">
+                <h3>Received</h3>
+                <p>Order has been received</p>
+            </div>
+            <button class="order-btn" onclick="nextPhase()">RECEIVED YOUR ORDER?</button>
+        </div>
+        
+        <!-- Second container for order details -->
+        <div class="order-details">
+            <h2>Order Details</h2>
+            <p>Total: $100.00</p>
+            <p>Address: 123 Main St, City, Country</p>
+            <p>Phone: +1234567890</p>
+        </div>
+        
+        <!-- Home button -->
+        <button class="home-btn" onclick="goHome()">Home</button>
+    </div>
+
+    <script>
+        let orderReceived = false;
+        const progress = document.getElementById("progress");
+
+        function nextPhase() {
+            rateExperience();
+        }
+
+        function rateExperience() {
+            let response = prompt("Has the order been received? (yes/no):");
+            if (response !== null) {
+                response = response.toLowerCase();
+                if (response === "yes" || response === "no") {
+                    orderReceived = (response === "yes");
+                    updateProgress();
+                    updateOrderPhasesVisibility();
+                    if (orderReceived) {
+                        getRating();
+                    }
+                } else {
+                    alert("Invalid response. Please enter 'yes' or 'no'.");
+                }
+            }
+        }
+
+        function getRating() {
+            let rating = prompt("Please rate your experience from 1 to 10:");
+            if (rating !== null) {
+                rating = parseInt(rating);
+                if (rating >= 1 && rating <= 10) {
+                    alert("THANK YOU FOR RATING");
+                } else {
+                    alert("Invalid rating. Please enter a number between 1 and 10.");
+                }
+            }
+        }
+
+        function updateProgress() {
+            if (orderReceived) {
+                progress.style.width = "100%";
+                progress.textContent = "Received";
+            } else {
+                progress.style.width = "0%";
+                progress.textContent = "Not Received";
+            }
+        }
+
+        function updateOrderPhasesVisibility() {
+            const phaseReceived = document.getElementById("phaseReceived");
+            if (orderReceived) {
+                phaseReceived.style.display = "block";
+            } else {
+                phaseReceived.style.display = "none";
+            }
+        }
+function goHome() {
+
+    window.location.href = "ecommercewebsite.html";
+}
+    
+
+         // JavaScript to toggle the sidebar
+         const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+        const content = document.getElementById('content');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+            content.classList.toggle('shifted');
+        });
+    </script>
+</body>
+</html>

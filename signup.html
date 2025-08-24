@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+<head>
+    <style>
+  
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --body-color: #E4E9F7;
+    --nav-color:   #4070F4;
+    --side-nav: #010718;
+    --text-color: #FFF;
+    --search-bar: #F2F2F2;
+    --search-text:  #010718;
+    }
+
+body {
+    height: 100vh;
+   overflow: hidden;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+
+*,*:before,*:after{box-sizing:border-box}
+
+.btn {
+ 
+  display: inline;
+}
+.btn button {
+    width:167.8px;
+
+    border: none;
+    padding: 5px;
+}
+.btn button:hover {
+    cursor: pointer;
+  text-decoration: underline;
+}
+.container{
+   
+  position:absolute;
+  margin-top: 3.9%;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  
+  &:hover,&:active{
+    .top, .bottom{
+      &:before, &:after{
+        margin-left: 200px;
+        transform-origin: -200px 50%;
+        transition-delay:0s;
+      }
+    }
+    
+    .center{
+      opacity:1;
+      transition-delay:0.2s;
+    }
+  }
+}
+
+.top, .bottom{
+  &:before, &:after{
+    content:'';
+    display:block;
+    position:absolute;
+    width:200vmax;
+    height:200vmax;
+    top:50%;left:50%;
+    margin-top:-100vmax;
+    transform-origin: 0 50%;
+    transition:all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+    z-index:10;
+    opacity:0.65;
+    transition-delay:0.2s;
+  }
+}
+
+.top{
+  &:before{transform:rotate(45deg);background:#3d52a0;}
+  &:after{transform:rotate(135deg);background:yellow;}
+}
+
+.bottom{
+  &:before{transform:rotate(-45deg);background:#7091e6;}
+  &:after{transform:rotate(-135deg);background:#ede8f5;}
+}
+
+.center{
+  position:absolute;
+  width:400px;
+  height:400px;
+  top:50%;left:50%;
+  margin-left:-200px;
+  margin-top:-200px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding:30px;
+  opacity:0;
+  transition:all 0.5s cubic-bezier(0.445, 0.05, 0, 1);
+  transition-delay:0s;
+  color:#333;
+  
+  input{
+    width:100%;
+    padding:15px;
+    margin:5px;
+    border-radius:1px;
+    border:1px solid yellow;
+    font-family:inherit;
+  }
+}
+
+
+/* Responsivity */
+
+@media only screen and (max-width: 990px) {
+    body {
+        background-size: 130%;
+    }
+}
+@media only screen and (max-width: 740px) {
+    body {
+        background-size: 175%;
+    }
+}
+@media only screen and (max-width: 555px) {
+    body {
+        background-size: 245%;
+    }
+}
+@media only screen and (max-width: 420px) {
+    body {
+        background-size: 265%;
+    }
+}
+@media only screen and (max-width: 380px) {
+    body {
+        background-size: 320%;
+    }
+}
+
+
+
+.homebar2 {
+            background-color: #7091e6;
+            width: 100%; /* Full width */
+            height: 60px; /* Height of the bar */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            padding: 0 20px; /* Padding inside the bar */
+            box-sizing: border-box; /* Includes padding and border in width */
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            left: 0;
+           
+            gap: 20px; /* 20px gap between child elements */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        .homebar2 .search-bar {
+            width: 63%; /* Set search bar width to 20% */
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            width: calc(100% - 40px); /* Adjust width to fit icon and padding */
+        }
+
+        .search-bar .search-icon {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4a76e8;
+            color: white;
+        }
+
+        .search-bar .search-icon:hover {
+            background-color: #3557d2;
+        }
+
+        .country-dropdown {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .country-dropdown select {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Icons and logo inside .homebar2 */
+        .menu-icon, .wishlist-icon, .account-icon, .cart-icon, .sign-in-button {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff; /* Make sure the icons are visible on the blue background */
+            margin: 1px;
+        }
+
+        .sign-in-button {
+            background-color: #fff; /* White background for the button */
+            color: #7091e6; /* Blue text color for contrast */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sign-in-button:hover {
+            background-color: #e0e0e0; /* Slightly darker background on hover */
+        }
+
+        #logo {
+            width: 1px; /* Logo size */
+            height: 1px; /* Logo size */
+            
+        }
+
+       
+
+        .content {
+            margin: 60px auto 0 auto; /* Start below the homebar2 and center content horizontally */
+            padding: 20px;
+            max-width: 1200px; /* Maximum width for content */
+            width: 100%; /* Ensure content takes full width */
+            box-sizing: border-box;
+            transition: margin-left 0.3s ease;
+        }
+        @media only screen and (max-width:600px){
+            .homebar2{
+                display: none;
+            }
+            .nav-bar{
+                display: none;
+            }
+.container {
+    margin-top: 0;
+
+}
+.center {
+    margin-left: -5px;
+    position: relative;
+    left:70px;
+    
+    margin-right: 10px;
+}
+        }
+      </style>
+</head>
+<body>
+<div class="homebar2">
+
+    <svg id="logo" viewBox="0 0 121.50 121.50" xmlns="http://www.w3.org/2000/svg" fill="#000000"> </svg>
+        <!-- Example SVG Logo Content -->
+        <svg fill="#000000" width="50px" height="50px" viewBox="-1.6 -1.6 35.20 35.20" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <style>
+                    .cls-1 {
+                        fill: none;
+                    }
+                </style>
+            </defs>
+            <g id="Layer_2" data-name="Layer 2">
+                <g id="Layer_1-2" data-name="Layer 1">
+                    <path d="M9.0423,19.1661A2.5212,2.5212,0,1,1,6.5212,16.645H9.0423Z"></path>
+                    <path d="M10.3127,19.1661a2.5212,2.5212,0,0,1,5.0423,0v6.3127a2.5212,2.5212,0,1,1-5.0423,0Z"></path>
+                    <path d="M12.8339,9.0423A2.5212,2.5212,0,1,1,15.355,6.5212V9.0423Z"></path>
+                    <path d="M12.8339,10.3127a2.5212,2.5212,0,0,1,0,5.0423H6.5212a2.5212,2.5212,0,1,1,0-5.0423Z"></path>
+                    <path d="M22.9577,12.8339a2.5212,2.5212,0,1,1,2.5211,2.5211H22.9577Z"></path>
+                    <path d="M21.6873,12.8339a2.5212,2.5212,0,0,1-5.0423,0V6.5212a2.5212,2.5212,0,1,1,5.0423,0Z"></path>
+                    <path d="M19.1661,22.9577a2.5212,2.5212,0,1,1-2.5211,2.5211V22.9577Z"></path>
+                    <path d="M19.1661,21.6873a2.5212,2.5212,0,0,1,0-5.0423h6.3127a2.5212,2.5212,0,1,1,0,5.0423Z"></path>
+                    <rect id="Transparent_Rectangle" data-name="<Transparent Rectangle>" class="cls-1" width="32" height="32"></rect>
+                </g>
+            </g>
+        
+    </svg>
+    <div class="search-bar">
+        <label for="search"></label>
+        <input type="text" placeholder="Search..." id="search">
+        <div class="search-icon" onclick="goToproductpage()">
+            <!-- SVG Search Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </div>
+    </div>
+    <div class="country-dropdown">
+        <select>
+            <option value="us">usa</option>
+            <option value="ca">Canada</option>
+            <option value="mx">Mexico</option>
+            <!-- Add more countries as needed -->
+        </select>
+    </div>
+    <!-- Add new icons here -->
+    <div class="wishlist-icon" onclick="gotowishlist()">
+        <!-- SVG Heart Icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+        </svg>
+    </div>
+    <div class="account-icon" onclick="goToaccount()">
+        <!-- SVG Human Icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+    </div>
+    <div class="cart-icon" onclick="goTocart()">
+        <!-- SVG Cart Icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4.2l1.6 3.9h11.6l1.6-3.9H23"></path>
+            <path d="M4.2 6l1.5 9h12.7l1.5-9H4.2z"></path>
+        </svg>
+    </div>
+    <button class="sign-in-button" onclick="goTosignin()">Sign</button>
+    
+</div>
+
+<script>
+
+function goTosignin() {
+    // Redirect to the homepage
+    window.location.href = "signup.html";
+}
+function goToaccount() {
+            // Redirect to the homepage
+            window.location.href = "userprofile.html";
+        }
+
+function gotowishlist() {
+    window.location.href = "ecommercewishlist.html";
+}
+function goTocart() {
+            // Redirect to the homepage
+            window.location.href = "ecommercecart.html";
+        }
+
+</script>
+
+
+
+
+
+   
+    
+
+    
+        <div class="container">
+            <div class="top">
+                <!-- Top content can go here -->
+            </div>
+            <div class="center">
+                <h2>Please Sign In</h2>
+                <label for="username"></label>
+                <input type="text" placeholder="Username" id="username">
+                <label for="pass"></label>
+                <input id="pass" type="password" placeholder="Password">
+            <div class="btn">
+            <button  onclick="home()" style="background-color: yellow;">sign in</button>
+            <button  onclick="signup()" style="background-color: #8697c4">sign up</button>
+        </div>
+        </div>
+            <div class="bottom">
+                <!-- Bottom content can go here -->
+            </div>
+        </div>
+    <script>
+function signup() {
+    // Redirect to the homepage
+    window.location.href = "signin.html";
+}
+function home() {
+    // Redirect to the homepage
+    window.location.href = "ecommercewebsite.html";
+}
+
+    </script>
+  
+
+
+</body>
+
+
+
+</html>

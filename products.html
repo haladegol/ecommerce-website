@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+
+
+
+<style>
+   
+
+
+
+
+
+.homebar2 {
+            background-color: #7091e6;
+            width: 100%; /* Full width */
+            height: 60px; /* Height of the bar */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            padding: 0 20px; /* Padding inside the bar */
+            box-sizing: border-box; /* Includes padding and border in width */
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure it stays above other content */
+            gap: 20px; /* 20px gap between child elements */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        .homebar2 .search-bar {
+            width: 63%; /* Set search bar width to 20% */
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            width: calc(100% - 40px); /* Adjust width to fit icon and padding */
+        }
+
+        .search-bar .search-icon {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4a76e8;
+            color: white;
+        }
+
+        .search-bar .search-icon:hover {
+            background-color: #3557d2;
+        }
+
+        .country-dropdown {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .country-dropdown select {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Icons and logo inside .homebar2 */
+        .menu-icon, .wishlist-icon, .account-icon, .cart-icon, .sign-in-button {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff; /* Make sure the icons are visible on the blue background */
+            margin: 1px;
+        }
+
+        .sign-in-button {
+            background-color: #fff; /* White background for the button */
+            color: #7091e6; /* Blue text color for contrast */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sign-in-button:hover {
+            background-color: #e0e0e0; /* Slightly darker background on hover */
+        }
+
+        #logo {
+            width: 1px; /* Logo size */
+            height: 1px; /* Logo size */
+            
+        }
+
+        .navbar {
+            list-style: none;
+            background-color: #7091e6;
+            height: 50000px;
+            width: 250px; /* Adjusted width for better visibility */
+            position: fixed;
+            top: 60px; /* Start below the homebar2 */
+            left: -250px; /* Hidden off-screen initially */
+            transition: left 0.3s ease;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            z-index: 1;
+            
+        }
+
+        .navbar.show {
+            left: 0; /* Slide in from the left */
+        }
+
+        .navbar li {
+            padding: 15px;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 2px;
+            margin-top: 30px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .navbar li:hover {
+            background-color: #555;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin: 60px auto 0 auto; /* Start below the homebar2 and center content horizontally */
+            padding: 20px;
+            max-width: 1200px; /* Maximum width for content */
+            width: 100%; /* Ensure content takes full width */
+            box-sizing: border-box;
+            transition: margin-left 0.3s ease;
+        }
+
+
+
+
+
+
+
+
+
+
+        .homebar2 {
+            background-color: #7091e6;
+            width: 100%; /* Full width */
+            height: 60px; /* Height of the bar */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            padding: 0 20px; /* Padding inside the bar */
+            box-sizing: border-box; /* Includes padding and border in width */
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure it stays above other content */
+            gap: 20px; /* 20px gap between child elements */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        .homebar2 .search-bar {
+            width: 63%; /* Set search bar width to 20% */
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            width: calc(100% - 40px); /* Adjust width to fit icon and padding */
+        }
+
+        .search-bar .search-icon {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4a76e8;
+            color: white;
+        }
+
+        .search-bar .search-icon:hover {
+            background-color: #3557d2;
+        }
+
+        .country-dropdown {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .country-dropdown select {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Icons and logo inside .homebar2 */
+        .menu-icon, .wishlist-icon, .account-icon, .cart-icon, .sign-in-button {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff; /* Make sure the icons are visible on the blue background */
+            margin: 1px;
+        }
+
+        .sign-in-button {
+            background-color: #fff; /* White background for the button */
+            color: #7091e6; /* Blue text color for contrast */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sign-in-button:hover {
+            background-color: #e0e0e0; /* Slightly darker background on hover */
+        }
+
+        #logo {
+            width: 1px; /* Logo size */
+            height: 1px; /* Logo size */
+            
+        }
+
+        .navbar {
+            list-style: none;
+            background-color: #7091e6;
+            height: 50000px;
+            width: 250px; /* Adjusted width for better visibility */
+            position: fixed;
+            top: 60px; /* Start below the homebar2 */
+            left: -250px; /* Hidden off-screen initially */
+            transition: left 0.3s ease;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            
+        }
+
+        .navbar.show {
+            left: 0; /* Slide in from the left */
+        }
+
+        .navbar li {
+            padding: 15px;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 2px;
+            margin-top: 30px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .navbar li:hover {
+            background-color: #ede8f5;
+        }
+
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+      /* Footer Styles */
+.footer {
+   
+   
+
+   color: #333;
+   
+   position: relative;
+  
+   
+   width:78%;
+
+   right: 1%;
+  
+   
+}
+
+.footer-content {
+   border-top: 4px solid yellow;
+   background-color: #ede8f5;
+   display: flex;
+   width:129%;
+   justify-content: space-between;
+  
+}
+
+.about-us, .footer-links, .contact-info, .newsletter, .social-media {
+   flex: 1;
+   margin: 0 20px;
+   min-width: 250px;
+}
+.about-us h2, .footer-links h3, .contact-info h3, .newsletter h3, .social-media h3 {
+
+   color: #3D52A0;
+}
+
+.about-us p, .contact-info p {
+   margin-bottom: 15px;
+}
+
+.footer-links ul {
+   list-style: none;
+   padding: 0;
+}
+
+.footer-links ul li {
+   margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+   text-decoration: none;
+   color: #333;
+   transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+   color: #3D52A0;
+}
+
+.contact-info a {
+   color: #3D52A0;
+   text-decoration: none;
+}
+.contact-info a:hover {
+   text-decoration: underline;
+}
+
+.newsletter {
+   
+   padding: 15px;
+   border-radius: 5px;
+}
+
+.newsletter form {
+   display: flex;
+   flex-direction: column;
+}
+
+.newsletter input[type="email"] {
+   padding: 10px;
+   margin-bottom: 10px;
+   border: 1px solid #ddd;
+   border-radius: 5px;
+   font-size: 1em;
+}
+
+.newsletter button {
+   padding: 10px;
+   border: none;
+   background-color: #3D52A0;
+   color: #fff;
+   cursor: pointer;
+   border-radius: 5px;
+   font-size: 1em;
+}
+
+.newsletter button:hover {
+   background-color: #ede8f5;
+}
+
+.social-media {
+   
+   flex-direction:row;
+}
+
+.social-media h3 {
+   margin-bottom: 15px;
+}
+
+.social-media .social-icon {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 1.5em;
+   color: #333;
+   margin-right: 10px;
+   text-decoration: none;
+}
+
+.social-media .social-icon:hover {
+   color: #ede8f5;
+}
+
+.footer-bottom {
+ padding-left: 48%;
+ 
+   padding-top: 10px;
+ 
+}
+
+.footer-bottom p {
+   margin: 0;
+   color: #666;
+}
+body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+        }
+
+    
+        .product-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 70px 0;
+            transform: scale(0.98);
+            opacity: 0;
+            animation: fadeInUp 0.6s forwards, zoomIn 0.6s forwards;
+            position: relative;
+            left: 14%;
+            width: 70%;
+        }
+
+        .product-image img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .product-image img:hover {
+            transform: scale(1.09);
+            
+
+        }
+.main-image-container {
+    border-radius: 8px;
+}
+        .product-details {
+            flex: 1;
+           
+        }
+
+        .product-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .product-price {
+            font-size: 24px;
+            color: #3D52A0;
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+            width: 450px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .add-to-cart {
+            background-color: #3D52A0;
+        }
+
+        .add-to-cart:hover {
+            background-color: navy;
+        }
+
+        .buy-now {
+            background-color: #8697c4;
+        }
+
+        .buy-now:hover {
+            background-color: navy;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.98);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .container {
+    position: relative;
+    width: 30%; /* Adjust width as needed */
+    max-width: 600px; /* Adjust max-width as needed */
+    cursor: crosshair;
+}
+
+.zoom-image {
+    width: 100%;
+    height: auto;
+}
+
+.zoom-lens {
+    position: absolute;
+    border: 3px solid #000;
+    cursor: crosshair;
+    width: 100px; /* Size of the magnifier lens */
+    height: 100px; /* Size of the magnifier lens */
+    opacity: 0.5;
+    display: none; /* Hide initially */
+}
+
+.zoomed-image {
+    position: absolute;
+ 
+    width: 70%; /* Adjust zoom level */
+    height: 70%;
+   
+    display: none; /* Hide initially */
+    overflow: hidden;
+    z-index: 999;
+}
+
+.zoomed-image img {
+    width: 100%;
+    height: 10%;
+    
+}
+.producttable {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container5{
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #3D52A0;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.additional-features td {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+
+.reviews-section {
+    width: 80%;
+    margin: 80px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.reviews-section button{
+    background-color: #3D52A0;
+    display: block;
+  margin-top: 25px;
+  border-radius: 45px;
+  color: white;
+  padding: 15px;
+  margin-left: 40%;
+}
+</style>
+</head>
+<body>
+    <div class="homebar2">
+        <div class="menu-icon" id="menu-icon">
+            <!-- SVG Hamburger Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </div>
+        <svg id="logo" viewBox="0 0 121.50 121.50" xmlns="http://www.w3.org/2000/svg" fill="#000000"> </svg>
+            <!-- Example SVG Logo Content -->
+            <svg fill="#000000" width="50px" height="50px" viewBox="-1.6 -1.6 35.20 35.20" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: none;
+                        }
+                    </style>
+                </defs>
+                <g id="Layer_2" data-name="Layer 2">
+                    <g id="Layer_1-2" data-name="Layer 1">
+                        <path d="M9.0423,19.1661A2.5212,2.5212,0,1,1,6.5212,16.645H9.0423Z"></path>
+                        <path d="M10.3127,19.1661a2.5212,2.5212,0,0,1,5.0423,0v6.3127a2.5212,2.5212,0,1,1-5.0423,0Z"></path>
+                        <path d="M12.8339,9.0423A2.5212,2.5212,0,1,1,15.355,6.5212V9.0423Z"></path>
+                        <path d="M12.8339,10.3127a2.5212,2.5212,0,0,1,0,5.0423H6.5212a2.5212,2.5212,0,1,1,0-5.0423Z"></path>
+                        <path d="M22.9577,12.8339a2.5212,2.5212,0,1,1,2.5211,2.5211H22.9577Z"></path>
+                        <path d="M21.6873,12.8339a2.5212,2.5212,0,0,1-5.0423,0V6.5212a2.5212,2.5212,0,1,1,5.0423,0Z"></path>
+                        <path d="M19.1661,22.9577a2.5212,2.5212,0,1,1-2.5211,2.5211V22.9577Z"></path>
+                        <path d="M19.1661,21.6873a2.5212,2.5212,0,0,1,0-5.0423h6.3127a2.5212,2.5212,0,1,1,0,5.0423Z"></path>
+                        <rect id="Transparent_Rectangle" data-name="<Transparent Rectangle>" class="cls-1" width="32" height="32"></rect>
+                    </g>
+                </g>
+            
+        </svg>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <div class="search-icon" onclick="goToproductpage()">
+                <!-- SVG Search Icon -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+        </div>
+        <div class="country-dropdown">
+            <select>
+                <option value="us">usa</option>
+                <option value="ca">Canada</option>
+                <option value="mx">Mexico</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        <!-- Add new icons here -->
+        <div class="wishlist-icon" onclick="gotowishlist()">
+            <!-- SVG Heart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+            </svg>
+        </div>
+        <div class="account-icon" onclick="goToaccount()">
+            <!-- SVG Human Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+        <div class="cart-icon" onclick="goTocart()">
+            <!-- SVG Cart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4.2l1.6 3.9h11.6l1.6-3.9H23"></path>
+                <path d="M4.2 6l1.5 9h12.7l1.5-9H4.2z"></path>
+            </svg>
+        </div>
+        <button class="sign-in-button" onclick="goTosignin()">Sign</button>
+        
+    </div>
+
+<script>
+    function goTosignin() {
+        // Redirect to the homepage
+        window.location.href = "signup.html";
+    }
+    function goToaccount() {
+            // Redirect to the homepage
+            window.location.href = "userprofile.html";
+        }
+
+function gotowishlist() {
+    window.location.href = "ecommercewishlist.html";
+}
+function goTocart() {
+            // Redirect to the homepage
+            window.location.href = "ecommercecart.html";
+        }
+
+</script>
+
+<ul class="navbar" id="navbar">
+    <li><a href="ecommercewebsite.html">home</a></li>
+    <div class="threebuttons">
+        <li><a href="signin.html">sign up</a></li>
+        <li><a href="products.html">products</a></li>
+        <li><a href="userprofile.html">account</a></li>
+        <li><a href="support.html">support</a></li>
+        <li><a href="support.html">about us</a></li>
+        <li><a href="ecommerceorders.html">orders</a></li>
+
+    </div>
+</ul>
+
+
+
+<main>
+    <div class="product-container">
+        <!-- Main Product Image -->
+        <div class="container" id="main">
+            <img src="C:\Users\user\Downloads\pexels-kpaukshtite-3270223.jpg" alt="Zoomable Image" class="zoom-image" id="zoomImage">
+            <div id="zoomLens" class="zoom-lens"></div>
+            <div id="zoomedImage" class="zoomed-image">
+              
+            </div>
+        </div>
+        
+        <!-- Thumbnail Images -->
+        <div class="otherpics">
+        
+            <div class="product-image">
+                <img src="C:\Users\user\Downloads\pexels-valeriiamiller-3910071.jpg" alt="Product Image" height="60px" width="60px" onclick="updateMainImage(this.src)">
+            </div>
+            <div class="product-image">
+                <img src="C:\Users\user\Downloads\pexels-suzyhazelwood-2533266.jpg" alt="Product Image" height="60px" width="60px" onclick="updateMainImage(this.src)">
+            </div>
+            <div class="product-image">
+                <img src="C:\Users\user\Downloads\pexels-mikebirdy-380954.jpg" alt="Product Image" height="60px" width="60px" onclick="updateMainImage(this.src)">
+            </div>
+           
+
+        </div>  
+
+        <!-- Product Details -->
+        <div class="product-details">
+            <h1 class="product-title">Amazing Product</h1>
+            <p class="product-price">$99.99</p>
+            <p class="product-description">
+                This is an amazing product that you will love. It features a sleek design, high-quality materials, and exceptional performance.
+            </p>
+            <div class="product-actions">
+                <button class="btn add-to-cart" onclick="cart()">Add to Cart</button>
+                <button class="btn buy-now" onclick="order()">Buy Now</button>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="producttable">
+<div class="container5">
+    <h1>Product Features</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Main Features -->
+            <tr>
+                <td>Feature 1</td>
+                <td>Description of Feature 1</td>
+            </tr>
+            <tr>
+                <td>Feature 2</td>
+                <td>Description of Feature 2</td>
+            </tr>
+            <tr>
+                <td>Feature 3</td>
+                <td>Description of Feature 3</td>
+            </tr>
+            <!-- Additional Features -->
+            <tr class="additional-features">
+                <td colspan="2"><strong>Additional Features</strong></td>
+            </tr>
+            <tr>
+                <td>Additional Feature 1</td>
+                <td>Description of Additional Feature 1</td>
+            </tr>
+            <tr>
+                <td>Additional Feature 2</td>
+                <td>Description of Additional Feature 2</td>
+            </tr>
+            <tr>
+                <td>Additional Feature 3</td>
+                <td>Description of Additional Feature 3</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+<script>
+    function cart() {
+        window.location.href = "ecommercecart.html";
+    }
+    function order() {
+        window.location.href = "placeorder.html";
+    }
+    function updateMainImage(src) {
+        var mainImage = document.getElementById('zoomImage');
+        mainImage.src = src;
+    }
+    </script>
+    <!-- Customer Reviews Section -->
+<div class="reviews-section">
+    <h2>Customer Reviews</h2>
+    <div class="review-form">
+        <h3>Leave a Review</h3>
+       
+        <form action="#" method="post">
+
+            
+            <label for="review-rating">Rating:</label>
+            <select id="review-rating" name="rating">
+                <option value="5">5 Stars</option>
+                <option value="4">4 Stars</option>
+                <option value="3">3 Stars</option>
+                <option value="2">2 Stars</option>
+                <option value="1">1 Star</option>
+            </select>
+            <br><br>
+            <label for="review-comment">Comment:</label>
+            <br>
+            <textarea id="review-comment" name="comment" rows="4" required></textarea>
+            <button type="submit" onclick="review()">Submit Review</button>
+        </form>
+    </div>
+
+</div>
+<script>
+    function review(){
+        alert("thank you for your review");
+    }
+</script>
+
+   <!-- About Us Footer Section -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="about-us">
+            <h2>About Us</h2>
+            <p>Welcome to [Your E-commerce Site Name], your number one source for all things [product category]. We're dedicated to providing you the very best of [products], with an emphasis on quality, customer service, and uniqueness.</p>
+            <p>Founded in [Year], [Your E-commerce Site Name] has come a long way from its beginnings in [Location]. When we first started out, our passion for [industry/goal] drove us to do intense research, so that [Your E-commerce Site Name] can offer you the world’s most advanced products. We now serve customers all over [world/nation], and are thrilled that we're able to turn our passion into our own website.</p>
+            <p>We hope you enjoy our products as much as we enjoy offering them to you. If you have any questions or comments, please don't hesitate to contact us.</p>
+        </div>
+        <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms of Service</a></li>
+            </ul>
+      <!--  </div>-->
+       <!-- <div class="social-media">-->
+            <h3>Follow Us</h3>
+            <a href="https://www.facebook.com" class="social-icon" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 0H2C0.89 0 0 0.89 0 2V22c0 1.11 0.89 2 2 2h12v-9H9v-4h5V9.5c0-5 2.75-7.5 6-7.5 1.67 0 3 0.08 3.4 0.12v4.03h-2.33c-1.84 0-2.19 0.88-2.19 2.19V8h4.5l-0.5 4H17v9h5c1.1 0 2-0.89 2-2V2c0-1.11-0.9-2-2-2z"/></svg>
+            </a>
+
+            <a href="https://www.instagram.com" class="social-icon" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2.2c3.1 0 3.5 0.01 4.7 0.07 1.8 0.08 2.9 0.38 3.6 0.8 0.6 0.39 1.1 0.9 1.6 1.6 0.4 0.6 0.71 1.2 0.8 1.8 0.06 1.2 0.07 1.6 0.07 4.7s-0.01 3.5-0.07 4.7c-0.09 1.8-0.4 3.0-0.8 3.6-0.39 0.6-0.9 1.1-1.6 1.6-0.6 0.39-1.2 0.7-1.8 0.8-1.2 0.06-1.6 0.07-4.7 0.07s-3.5-0.01-4.7-0.07c-1.8-0.09-2.9-0.4-3.6-0.8-0.6-0.39-1.1-0.9-1.6-1.6-0.4-0.6-0.71-1.2-0.8-1.8-0.06-1.2-0.07-1.6-0.07-4.7s0.01-3.5 0.07-4.7c0.09-1.8 0.4-2.9 0.8-3.6 0.39-0.6 0.9-1.1 1.6-1.6 0.6-0.39 1.2-0.7 1.8-0.8 1.2-0.06 1.6-0.07 4.7-0.07zM12 0c-3.3 0-3.7 0.01-5 0.07-2.7 0.11-4.5 0.53-6 1.5-1.8 1.2-3.2 2.6-4.2 4.5-0.94 1.5-1.5 3.4-1.8 5.5-0.11 1.3-0.17 2.5-0.17 5s0.06 3.7 0.17 5c0.32 2.1 0.83 4.0 1.8 5.5 1.1 1.9 2.4 3.3 4.2 4.5 1.5 0.97 3.3 1.4 6 1.5 1.3 0.07 1.7 0.08 5 0.08 3.3 0 3.7-0.01 5-0.08 2.7-0.11 4.5-0.53 6-1.5 1.8-1.2 3.2-2.6 4.2-4.5 0.94-1.5 1.5-3.4 1.8-5.5 0.11-1.3 0.17-2.5 0.17-5s-0.06-3.7-0.17-5c-0.32-2.1-0.83-4.0-1.8-5.5-1.1-1.9-2.4-3.3-4.2-4.5-1.5-0.97-3.3-1.4-6-1.5-1.3-0.06-1.7-0.07-5-0.07zM12 5.4c-3.7 0-6.7 3-6.7 6.7 0 3.7 3 6.7 6.7 6.7 3.7 0 6.7-3 6.7-6.7s-3-6.7-6.7-6.7zM12 15.5c-1.6 0-3-1.3-3-3 0-1.6 1.3-3 3-3 1.6 0 3 1.3 3 3 0 1.6-1.3 3-3 3z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com" class="social-icon" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M22 0H2C0.89 0 0 0.89 0 2v20c0 1.11 0.89 2 2 2h20c1.1 0 2-0.89 2-2V2c0-1.11-0.9-2-2-2zM6.94 20.45H4.12V10.96h2.82v9.49zM5.53 9.16c-0.91 0-1.65-0.74-1.65-1.65 0-0.91 0.74-1.65 1.65-1.65 0.91 0 1.65 0.74 1.65 1.65 0 0.91-0.74 1.65-1.65 1.65zM20.98 20.45h-2.82v-5.25c0-1.25-0.02-2.85-1.73-2.85-1.73 0-2.00 1.35-2.00 2.75v5.35h-2.82v-9.49h2.71v1.29h0.04c0.38-0.72 1.30-1.48 2.68-1.48 2.85 0 3.37 1.87 3.37 4.31v5.37z"/></svg>
+            </a>
+        </div>
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@yourecommercewebsite.com">info@yourecommercewebsite.com</a></p>
+            <p>Phone: +1 234 567 890</p>
+            <p>Address: 123 E-commerce St, Shop City, SC 12345</p>
+        </div>
+        <!-- New Sections -->
+        <div class="newsletter">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Stay updated with the latest offers and products. Subscribe to our newsletter!</p>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="Your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+       
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 [Your E-commerce Site Name]. All rights reserved.</p>
+    </div>
+</footer>
+    
+      <script>
+        // JavaScript to toggle the sidebar
+        const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+        const content = document.getElementById('content');
+        
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+            content.classList.toggle('shifted');
+        });
+        
+      
+
+        </script>
+    <script>const lens = document.getElementById('zoomLens');
+        const img = document.getElementById('zoomImage');
+        const zoomedImage = document.getElementById('zoomedImage');
+        
+        img.addEventListener('mousemove', moveLens);
+        img.addEventListener('click', toggleZoom);
+        
+        function moveLens(e) {
+            const { left, top, width, height } = img.getBoundingClientRect();
+            const lensSize = lens.offsetWidth;
+            
+            let x = e.clientX - left;
+            let y = e.clientY - top;
+            
+            if (x < lensSize / 2) x = lensSize / 2;
+            if (y < lensSize / 2) y = lensSize / 2;
+            if (x > width - lensSize / 2) x = width - lensSize / 2;
+            if (y > height - lensSize / 2) y = height - lensSize / 2;
+            
+            lens.style.left = x - lensSize / 2 + 'px';
+            lens.style.top = y - lensSize / 2 + 'px';
+        
+            const zoomScale = 2; // Adjust zoom scale
+            zoomedImage.style.backgroundImage = `url(${img.src})`;
+            zoomedImage.style.backgroundSize = `${width * zoomScale}px ${height * zoomScale}px`;
+            zoomedImage.style.backgroundPosition = `-${(x - lensSize / 2) * zoomScale}px -${(y - lensSize / 2) * zoomScale}px`;
+            zoomedImage.style.left = `${e.clientX + 20}px`; // Adjust positioning of zoomed image
+            zoomedImage.style.top = `${e.clientY + 20}px`; // Adjust positioning of zoomed image
+        }
+        
+        function toggleZoom() {
+            if (zoomedImage.style.display === 'none' || zoomedImage.style.display === '') {
+                zoomedImage.style.display = 'block';
+            } else {
+                zoomedImage.style.display = 'none';
+            }
+        }
+        </script>
+
+
+
+</body>
+</html>

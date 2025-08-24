@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<!--هنعتبر اسم الشركه ابوعلى     فى الصفحه دى -->
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        * {
+           
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            --body-color: #E4E9F7;
+            --nav-color: #4070F4;
+            --text-color: #010718;
+            --box-bg-color: #FFF;
+            --box-border-color: rgba(128, 128, 128, 0.5);
+            --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            min-height: 100%;
+            background-color: var(--body-color);
+            padding: 20px;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            opacity: 1;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 45px;
+            color: var(--text-color);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            width: calc(100% - 40px);
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid var(--box-border-color);
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--nav-color);
+            outline: none;
+        }
+
+        .search-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            border: 1px solid var(--box-border-color);
+            border-radius: 5px;
+            margin-left: -40px;
+            background-color: var(--box-bg-color);
+        }
+
+        .search-icon:before {
+            content: '\1F50D';
+            font-size: 20px;
+            color: var(--nav-color);
+        }
+
+        .search-text {
+            text-align: left;
+            color: var(--nav-color);
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+        .view-boxes {
+            display: none;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .view-box {
+            background-color: var(--box-bg-color);
+            border: 1px solid var(--box-border-color);
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 300px;
+            box-shadow: var(--box-shadow);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .view-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .view-box h2 {
+            margin-bottom: 10px;
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        .view-box p {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .view-box::before {
+            content: '➜';
+            font-size: 24px;
+            position: absolute;
+            top: 20px;
+            left: -40px;
+            color: var(--nav-color);
+            cursor: pointer;
+        }
+        .para2 {
+           
+            border-radius: 10px;
+            background-color: white;
+padding: 50px;
+margin-left: 20px;
+padding-left: 1px;
+
+
+
+        }
+      
+        
+
+        /* Media queries for responsiveness */
+        @media only screen and (max-width: 768px) {
+            .container {
+                width: 95%;
+            }
+
+            .view-boxes {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .view-box {
+                max-width: 100%;
+            }
+
+            .view-box::before {
+                left: 10px;
+                top: -10px;
+                font-size: 20px;
+            }
+        }
+
+        .faq-container {
+            margin-top: 40px;
+            display: none;
+            border: 1px solid blue;
+            border-radius: 10px;
+            background-color: white;
+padding: 50px;
+        }
+
+        .faq-container h3 {
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-container p {
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+
+        .faq-container p strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #4070F4;
+        }
+
+
+
+
+
+
+
+        .homebar2 {
+            background-color: #7091e6;
+            width: 100%; /* Full width */
+            height: 60px; /* Height of the bar */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            padding: 0 20px; /* Padding inside the bar */
+            box-sizing: border-box; /* Includes padding and border in width */
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure it stays above other content */
+            gap: 20px; /* 20px gap between child elements */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        .homebar2 .search-bar {
+            width: 63%; /* Set search bar width to 20% */
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+     
+
+        .country-dropdown {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .country-dropdown select {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Icons and logo inside .homebar2 */
+        .menu-icon, .wishlist-icon, .account-icon, .cart-icon, .sign-in-button {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff; /* Make sure the icons are visible on the blue background */
+            margin: 1px;
+        }
+
+        .sign-in-button {
+            background-color: #fff; /* White background for the button */
+            color: #7091e6; /* Blue text color for contrast */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sign-in-button:hover {
+            background-color: #e0e0e0; /* Slightly darker background on hover */
+        }
+
+        #logo {
+            width: 1px; /* Logo size */
+            height: 1px; /* Logo size */
+            
+        }
+
+        .navbar {
+            list-style: none;
+            background-color: #7091e6;
+            height: 50000px;
+            width: 250px; /* Adjusted width for better visibility */
+            position: fixed;
+            top: 60px; /* Start below the homebar2 */
+            left: -250px; /* Hidden off-screen initially */
+            transition: left 0.3s ease;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            
+        }
+
+        .navbar.show {
+            left: 0; /* Slide in from the left */
+        }
+
+        .navbar li {
+            padding: 15px;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 2px;
+            margin-top: 30px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .navbar li:hover {
+            background-color: #ede8f5;
+        }
+
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            margin: 60px auto 0 auto; /* Start below the homebar2 and center content horizontally */
+            padding: 20px;
+            max-width: 1200px; /* Maximum width for content */
+            width: 100%; /* Ensure content takes full width */
+            box-sizing: border-box;
+            transition: margin-left 0.3s ease;
+        }
+
+
+label {
+    background-color: #FFF;
+    height: 75%;
+    border-radius: 5px;
+    width: 63%;
+}
+
+
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+    <div class="homebar2">
+        <div class="menu-icon" id="menu-icon">
+            <!-- SVG Hamburger Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </div>
+        <svg id="logo" viewBox="0 0 121.50 121.50" xmlns="http://www.w3.org/2000/svg" fill="#000000"> </svg>
+            <!-- Example SVG Logo Content -->
+            <svg fill="#000000" width="50px" height="50px" viewBox="-1.6 -1.6 35.20 35.20" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: none;
+                        }
+                    </style>
+                </defs>
+                <g id="Layer_2" data-name="Layer 2">
+                    <g id="Layer_1-2" data-name="Layer 1">
+                        <path d="M9.0423,19.1661A2.5212,2.5212,0,1,1,6.5212,16.645H9.0423Z"></path>
+                        <path d="M10.3127,19.1661a2.5212,2.5212,0,0,1,5.0423,0v6.3127a2.5212,2.5212,0,1,1-5.0423,0Z"></path>
+                        <path d="M12.8339,9.0423A2.5212,2.5212,0,1,1,15.355,6.5212V9.0423Z"></path>
+                        <path d="M12.8339,10.3127a2.5212,2.5212,0,0,1,0,5.0423H6.5212a2.5212,2.5212,0,1,1,0-5.0423Z"></path>
+                        <path d="M22.9577,12.8339a2.5212,2.5212,0,1,1,2.5211,2.5211H22.9577Z"></path>
+                        <path d="M21.6873,12.8339a2.5212,2.5212,0,0,1-5.0423,0V6.5212a2.5212,2.5212,0,1,1,5.0423,0Z"></path>
+                        <path d="M19.1661,22.9577a2.5212,2.5212,0,1,1-2.5211,2.5211V22.9577Z"></path>
+                        <path d="M19.1661,21.6873a2.5212,2.5212,0,0,1,0-5.0423h6.3127a2.5212,2.5212,0,1,1,0,5.0423Z"></path>
+                        <rect id="Transparent_Rectangle" data-name="<Transparent Rectangle>" class="cls-1" width="32" height="32"></rect>
+                    </g>
+                </g>
+            
+        </svg>
+       <label></label>
+        <div class="country-dropdown">
+            <select>
+                <option value="us">usa</option>
+                <option value="ca">Canada</option>
+                <option value="mx">Mexico</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        <!-- Add new icons here -->
+        <div class="wishlist-icon" onchange="gotowishlist()">
+            <!-- SVG Heart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+            </svg>
+        </div>
+        <div class="account-icon" onclick="goToaccount()">
+            <!-- SVG Human Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+        <div class="cart-icon" onclick="goTocart()">
+            <!-- SVG Cart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4.2l1.6 3.9h11.6l1.6-3.9H23"></path>
+                <path d="M4.2 6l1.5 9h12.7l1.5-9H4.2z"></path>
+            </svg>
+        </div>
+        <button class="sign-in-button" onclick="goTosignin()">Sign</button>
+        
+    </div>
+    <script>
+
+        function goTosignin() {
+            // Redirect to the homepage
+            window.location.href = "signup.html";
+        }
+        function goToaccount() {
+            // Redirect to the homepage
+            window.location.href = "userprofile.html";
+        }
+
+function gotowishlist() {
+    window.location.href = "ecommercewishlist.html";
+}
+function goTocart() {
+            // Redirect to the homepage
+            window.location.href = "ecommercecart.html";
+        }
+
+        
+        </script>
+   
+    <ul class="navbar" id="navbar">
+        <li><a href="ecommercewebsite.html">home</a></li>
+        <div class="threebuttons">
+            <li><a href="signin.html">sign up</a></li>
+            <li><a href="products.html">products</a></li>
+            <li><a href="userprofile.html">account</a></li>
+            <li><a href="support.html">support</a></li>
+            <li><a href="support.html">about us</a></li>
+            <li><a href="ecommerceorders.html">orders</a></li>
+
+        </div>
+    </ul>
+    <div class="container">
+        <h1>How can we help you?</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Describe your issue..." id="searchInput">
+            <div class="search-icon" onclick="search()">
+                <!-- Search icon -->
+            </div>
+        </div>
+        <div class="search-text" id="searchText"></div>
+        <div class="view-boxes" id="viewBoxes">
+            <div class="view-box" onclick="insertText('Abo Ali: Revolutionizing E-commerce in the Digital Age')">
+                <h2>Popular Articles</h2>
+                <p>Explore the most common questions and articles.</p>
+            </div>
+            <div class="view-box" onclick="insertText('FAQ')">
+                <h2>FAQ</h2>
+                <p>Find answers to frequently asked questions.</p>
+            </div>
+            <div class="view-box" onclick="goToHomePage()">
+                <h2>Go to Home Page</h2>
+                <p>Search our extensive knowledge base.</p>
+            </div>
+        </div>
+
+        <div class="faq-container" id="faqContainer">
+            <h3>Frequently Asked Questions</h3>
+            <p><strong>Q1: What is Abo Ali?</strong> Abo Ali is a user-friendly e-commerce platform that offers a wide range of products across various categories, including electronics, fashion, home goods, and personal care. It aims to provide a seamless and secure online shopping experience.</p>
+            <p><strong>Q2: How do I create an account on Abo Ali?</strong> To create an account, click on the Sign Up button on the homepage, fill in the required information, and follow the prompts. You will receive a confirmation email to verify your account.</p>
+            <p><strong>Q3: What should I do if I forget my password?</strong> If you forget your password, click on the Forgot Password link on the login page and follow the instructions to reset it. You will receive an email with a link to create a new password.</p>
+            <p><strong>Q4: How can I contact customer support?</strong> You can contact our customer support team 24/7 through live chat, email at support@aboali.com, or by calling our hotline at +123-456-7890.</p>
+            <h3>Shopping and Orders</h3>
+            <p><strong>Q1: How do I place an order on Abo Ali?</strong> Browse the categories or use the search bar to find products. Add items to your cart, proceed to checkout, and follow the prompts to complete your purchase.</p>
+            <p><strong>Q2: Can I cancel or modify my order after it has been placed?</strong> Orders can be canceled or modified before they are shipped. Please contact customer support as soon as possible to make changes to your order.</p>
+            <p><strong>Q3: How can I track my order?</strong> Once your order is shipped, you will receive a tracking number via email. You can use this number on our website or the carrier’s website to track your order.</p>
+            <p><strong>Q4: What payment methods are accepted?</strong> Abo Ali accepts various payment methods, including credit cards, PayPal, and other secure online payment gateways.</p>
+            <h3>Shipping and Delivery</h3>
+            <p><strong>Q1: What are the shipping options and costs?</strong> Shipping options and costs vary based on the destination and the shipping method chosen. Detailed information will be provided at checkout.</p>
+            <p><strong>Q2: How long does delivery take?</strong> Delivery times depend on your location and the shipping method selected. Standard delivery typically takes 3-7 business days, while expedited options are available for faster delivery.</p>
+            <p><strong>Q3: Do you offer international shipping?</strong> Yes, Abo Ali ships to many countries worldwide. International shipping costs and delivery times will be calculated at checkout.</p>
+            <p><strong>Q4: What should I do if my order is delayed or lost?</strong> If your order is delayed or lost, please contact customer support for assistance. We will investigate the issue and provide a resolution.</p>
+            <h3>Returns and Refunds</h3>
+            <p><strong>Q1: What is the return policy for Abo Ali?</strong> Abo Ali offers a 30-day return policy on most products. Items must be returned in their original condition and packaging. Some items, such as perishable goods or personalized items, may not be eligible for return.</p>
+            <p><strong>Q2: How do I initiate a return?</strong> To initiate a return, log into your account, go to the order history, select the item you wish to return, and follow the prompts. You will receive instructions on how to send the item back.</p>
+            <p><strong>Q3: When will I receive my refund?</strong> Refunds are processed within 5-7 business days after we receive and inspect the returned item. The refund will be credited to the original payment method.</p>
+            <p><strong>Q4: Can I exchange an item instead of returning it?</strong> Yes, exchanges are possible for eligible items. Follow the same process as initiating a return, and select the exchange option. You can choose a different size, color, or a different product of equal value.</p>
+            <h3>Vendor and Seller Information</h3>
+            <p><strong>Q1: How can I become a seller on Abo Ali?</strong> To become a seller, click on the Sell with Us link at the bottom of the homepage, fill out the application form, and submit the required documents. Our team will review your application and contact you with further instructions.</p>
+            <p><strong>Q2: What fees are associated with selling on Abo Ali?</strong> Selling fees vary based on the product category and the sales volume. Detailed information about fees can be found in the seller’s guide or by contacting our seller support team.</p>
+            <p><strong>Q3: How do I manage my inventory and orders as a seller?</strong> Sellers can manage their inventory and orders through the seller dashboard, which provides tools for tracking sales, updating stock, and communicating with customers.</p>
+            <p><strong>Q4: What support is available for sellers?</strong> Abo Ali offers dedicated seller support through various channels, including email, live chat, and phone. Additionally, we provide resources and guides to help sellers succeed on our platform.</p>
+            <p>For any other questions or concerns, please do not hesitate to contact our customer support team. We are here to help you have the best possible experience with Abo Ali.</p>
+<br><br><br>
+<div class="para2">
+            <h3>Abo Ali: Revolutionizing E-commerce in the Digital Age</h3>
+            <p>In an era where the digital landscape continues to evolve at breakneck speed, e-commerce platforms have become the backbone of the global retail sector. Among the rising stars in this competitive arena is Abo Ali, a cutting-edge e-commerce platform that is making waves with its innovative approach and user-centric design. This article explores the unique features, benefits, and the impact of Abo Ali on the e-commerce industry.</p>
+            
+            <h2>The Genesis of Abo Ali</h2>
+            <p>Abo Ali was conceived with a clear vision: to simplify online shopping and make it accessible to everyone, regardless of their technological prowess. Founded by a team of tech enthusiasts and retail experts, Abo Ali quickly gained traction by offering a seamless shopping experience tailored to the needs of both buyers and sellers. The platform’s name, derived from a popular and relatable persona, resonates well with a diverse audience, enhancing its appeal and market penetration.</p>
+            
+            <h2>Key Features of Abo Ali</h2>
+            <ul>
+                <li><strong>User-Friendly Interface:</strong> Abo Ali stands out for its intuitive and easy-to-navigate interface. Whether you are a seasoned online shopper or a novice, the platform ensures a hassle-free experience. The clean layout, coupled with advanced search and filter options, allows users to find products quickly and efficiently.</li>
+                <li><strong>Comprehensive Product Range:</strong> From electronics to fashion, home goods to personal care products, Abo Ali boasts a vast catalog that caters to various customer needs. The platform collaborates with a wide array of vendors, ensuring that users have access to a diverse selection of high-quality products.</li>
+                <li><strong>Secure Transactions:</strong> Security is a top priority for Abo Ali. The platform employs robust encryption and secure payment gateways to protect user data and financial information. Customers can shop with confidence, knowing their transactions are safe from cyber threats.</li>
+                <li><strong>Personalized Shopping Experience:</strong> Leveraging advanced algorithms and AI technology, Abo Ali offers personalized recommendations based on user preferences and browsing history. This feature enhances customer satisfaction by making shopping more relevant and enjoyable.</li>
+                <li><strong>Efficient Logistics and Delivery:</strong> Abo Ali has partnered with leading logistics companies to ensure timely and reliable delivery of products. The platform provides real-time tracking, giving customers peace of mind and up-to-date information on their orders.</li>
+                <li><strong>Exceptional Customer Support:</strong> Customer service is at the heart of Abo Ali’s operations. The platform offers 24/7 support through various channels, including live chat, email, and phone, ensuring that customers can resolve any issues swiftly and efficiently.</li>
+            </ul>
+            
+            <h2>Impact on the E-commerce Landscape</h2>
+            <p>Abo Ali’s innovative approach has not only attracted a loyal customer base but also set new standards in the e-commerce industry. Its focus on user experience, security, and personalization has driven customer satisfaction and retention rates. Additionally, the platform’s commitment to supporting vendors with tools and resources to manage their online stores effectively has fostered a thriving marketplace.</p>
+            <p>By bridging the gap between technology and user needs, Abo Ali is democratizing online shopping. Its inclusive design and comprehensive services are empowering more people to participate in the digital economy, thereby driving growth and innovation in the e-commerce sector.</p>
+            
+            <h2>Future Prospects</h2>
+            <p>Looking ahead, Abo Ali is poised for further expansion and innovation. The platform is continuously exploring new technologies such as augmented reality (AR) for virtual try-ons, blockchain for enhanced security, and machine learning for even more precise personalization. Additionally, Abo Ali aims to expand its footprint in international markets, bringing its unique shopping experience to a global audience.</p>
+            
+            <h2>Conclusion</h2>
+            <p>Abo Ali is more than just an e-commerce platform; it is a pioneering force in the digital retail space. With its user-centric design, extensive product range, and commitment to security and customer satisfaction, Abo Ali is transforming the way people shop online. As it continues to evolve and expand, Abo Ali is set to become a major player in the global e-commerce market, shaping the future of online shopping for years to come.</p>
+        
+                 </div>
+         </div>
+    </div>
+
+    <script>
+        function insertText(text) {
+    document.getElementById('searchInput').value = text;
+    document.getElementById('searchText').textContent = text;
+    search();
+
+    // Check if the text matches the specific article title
+    if (text === 'Abo Ali: Revolutionizing E-commerce in the Digital Age') {
+        // Scroll to the "para2" section
+        var para2Section = document.querySelector('.para2');
+        if (para2Section) {
+            para2Section.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+}
+
+
+        function search() {
+            var searchBar = document.querySelector('.search-bar');
+            var viewBoxes = document.getElementById('viewBoxes');
+            var textBox = document.getElementById('searchInput');
+            var textBoxValue = textBox.value.trim();
+            if (textBoxValue !== '') {
+                // If search input has value, show the view boxes and FAQ
+                viewBoxes.style.display = 'flex';
+                document.getElementById('faqContainer').style.display = 'block';
+            } else {
+                // Otherwise, hide the view boxes, FAQ, and search bar
+                viewBoxes.style.display = 'none';
+                document.getElementById('faqContainer').style.display = 'none';
+                searchBar.style.display = 'none';
+            }
+        }
+
+        function goToHomePage() {
+            // Redirect to the homepage
+            window.location.href ="ecommercewebsite.html";
+        }
+
+        // Add an event listener to the search icon to clear the search bar
+        document.querySelector('.search-icon').addEventListener('click', function() {
+            document.getElementById('searchInput').value = '';
+        });
+         // JavaScript to toggle the sidebar
+         const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+        const content = document.getElementById('content');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+            content.classList.toggle('shifted');
+        });
+
+    </script>
+</body>
+
+</html>

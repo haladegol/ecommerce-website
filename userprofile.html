@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+        * {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+
+
+            background-image: linear-gradient(to top,#EDE8F5 , #7091e6);
+
+
+
+
+
+
+            background-size: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-repeat: no-repeat;
+            background-position: center;
+            position: relative;
+        }
+        .title {
+            color: #fff;
+            font-size: 24px; /* Adjusted font size */
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px; /* Adjusted margin */
+        }
+
+        .profile-frame {
+            position: absolute;
+            top: 53%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid white;
+            padding: 20px; /* Adjusted padding */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px; /* Adjusted max-width */
+            width: 100%;
+        }
+
+
+
+
+
+
+
+
+        .homebar2 {
+            background-color: #7091e6;
+            width: 100%; /* Full width */
+            height: 60px; /* Height of the bar */
+            display: flex; /* Flexbox for alignment */
+            align-items: center; /* Center items vertically */
+            padding: 0 20px; /* Padding inside the bar */
+            box-sizing: border-box; /* Includes padding and border in width */
+            position: fixed; /* Fixed at the top */
+            top: 0;
+            left: 0;
+            z-index: 1; /* Ensure it stays above other content */
+            gap: 20px; /* 20px gap between child elements */
+            justify-content: center; /* Center content horizontally */
+        }
+
+        .homebar2 .search-bar {
+            width: 63%; /* Set search bar width to 20% */
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .search-bar input {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            width: calc(100% - 40px); /* Adjust width to fit icon and padding */
+        }
+
+        .search-bar .search-icon {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #4a76e8;
+            color: white;
+        }
+
+        .search-bar .search-icon:hover {
+            background-color: #3557d2;
+        }
+
+        .country-dropdown {
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .country-dropdown select {
+            border: none;
+            padding: 10px;
+            font-size: 16px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Icons and logo inside .homebar2 */
+        .menu-icon, .wishlist-icon, .account-icon, .cart-icon, .sign-in-button {
+            font-size: 24px;
+            cursor: pointer;
+            color: #fff; /* Make sure the icons are visible on the blue background */
+            margin: 1px;
+        }
+
+        .sign-in-button {
+            background-color: #fff; /* White background for the button */
+            color: #7091e6; /* Blue text color for contrast */
+            border: none; /* Remove default border */
+            padding: 10px 20px; /* Padding for button */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .sign-in-button:hover {
+            background-color: #e0e0e0; /* Slightly darker background on hover */
+        }
+
+        #logo {
+            width: 50px; /* Logo size */
+            height: 50px; /* Logo size */
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .navbar {
+            list-style: none;
+            background-color: #7091e6;
+            height: 50000px;
+            width: 250px; /* Adjusted width for better visibility */
+            position: fixed;
+            top: 60px; /* Start below the homebar2 */
+            left: -250px; /* Hidden off-screen initially */
+            transition: left 0.3s ease;
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+            
+        }
+
+        .navbar.show {
+            left: 0; /* Slide in from the left */
+        }
+
+        .navbar li {
+            padding: 15px;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 2px;
+            margin-top: 30px;
+            margin-left: 20px;
+            margin-bottom: 30px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .navbar li:hover {
+            background-color: #ede8f5;
+        }
+
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        .profile-info {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px; /* Adjusted margin */
+        }
+
+        .profile-info label {
+            font-weight: bold;
+            flex: 1 1 100%;
+            margin-bottom: 3px; /* Adjusted margin */
+            color: #333;
+            font-size: 14px; /* Adjusted font size */
+        }
+
+        .profile-info input {
+            flex: 1 1 100%;
+            padding: 8px; /* Adjusted padding */
+            margin-bottom: 8px; /* Adjusted margin */
+            border: 1px solid rgba(128, 128, 128, 0.5);
+            transition: border-color 0.3s;
+            font-size: 14px; /* Adjusted font size */
+        }
+
+        .profile-info input:hover {
+            border-color: dodgerblue;
+        }
+
+        .profile-info input.editable {
+            border-color: red;
+        }
+
+        .profile-info input.editable:hover {
+            border-color: red;
+        }
+
+        .edit-icon {
+            float: right;
+            margin-top: -20px;
+            margin-right: -20px;
+            cursor: pointer;
+        }
+
+        .btn {
+            width: 100%;
+            height: 40px; /* Adjusted height */
+            background: white;
+            border: none;
+            color: black;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+            text-align: center;
+            line-height: 40px; /* Adjusted line-height */
+            margin-top: 10px;
+            font-size: 16px; /* Adjusted font size */
+        }
+
+        .btn:hover {
+            background: none;
+            color: blue;
+        }
+
+        /* Responsivity */
+        @media only screen and (max-width: 768px) {
+            .profile-frame {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div class="homebar2">
+        <div class="menu-icon" id="menu-icon">
+            <!-- SVG Hamburger Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                <path d="M3 12h18M3 6h18M3 18h18"></path>
+            </svg>
+        </div>
+        <svg id="logo" viewBox="0 0 121.50 121.50" xmlns="http://www.w3.org/2000/svg" fill="#000000">
+            <!-- Example SVG Logo Content -->
+            <svg fill="#000000" width="109px" height="109px" viewBox="-1.6 -1.6 35.20 35.20" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <style>
+                        .cls-1 {
+                            fill: none;
+                        }
+                    </style>
+                </defs>
+                <g id="Layer_2" data-name="Layer 2">
+                    <g id="Layer_1-2" data-name="Layer 1">
+                        <path d="M9.0423,19.1661A2.5212,2.5212,0,1,1,6.5212,16.645H9.0423Z"></path>
+                        <path d="M10.3127,19.1661a2.5212,2.5212,0,0,1,5.0423,0v6.3127a2.5212,2.5212,0,1,1-5.0423,0Z"></path>
+                        <path d="M12.8339,9.0423A2.5212,2.5212,0,1,1,15.355,6.5212V9.0423Z"></path>
+                        <path d="M12.8339,10.3127a2.5212,2.5212,0,0,1,0,5.0423H6.5212a2.5212,2.5212,0,1,1,0-5.0423Z"></path>
+                        <path d="M22.9577,12.8339a2.5212,2.5212,0,1,1,2.5211,2.5211H22.9577Z"></path>
+                        <path d="M21.6873,12.8339a2.5212,2.5212,0,0,1-5.0423,0V6.5212a2.5212,2.5212,0,1,1,5.0423,0Z"></path>
+                        <path d="M19.1661,22.9577a2.5212,2.5212,0,1,1-2.5211,2.5211V22.9577Z"></path>
+                        <path d="M19.1661,21.6873a2.5212,2.5212,0,0,1,0-5.0423h6.3127a2.5212,2.5212,0,1,1,0,5.0423Z"></path>
+                        <rect id="_Transparent_Rectangle_" data-name="<Transparent Rectangle>" class="cls-1" width="32" height="32"></rect>
+                    </g>
+                </g>
+            </svg>
+        </svg>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+            <div class="search-icon">
+                <!-- SVG Search Icon -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </div>
+        </div>
+        <div class="country-dropdown">
+            <select>
+                <option value="us">usa</option>
+                <option value="ca">Canada</option>
+                <option value="mx">Mexico</option>
+                <!-- Add more countries as needed -->
+            </select>
+        </div>
+        <!-- Add new icons here -->
+        <div class="wishlist-icon" onclick="gotowishlist()">
+            <!-- SVG Heart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-heart">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+            </svg>
+        </div>
+        <div class="account-icon" onclick="goToaccount()">
+            <!-- SVG Human Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+        </div>
+        <div class="cart-icon" onclick="goTocart()">
+            <!-- SVG Cart Icon -->
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4.2l1.6 3.9h11.6l1.6-3.9H23"></path>
+                <path d="M4.2 6l1.5 9h12.7l1.5-9H4.2z"></path>
+            </svg>
+        </div>
+        <button class="sign-in-button" onclick="goTosignin()">Sign</button>
+        
+    </div>
+
+    <script>
+
+        function goTosignin() {
+            // Redirect to the homepage
+            window.location.href = "signup.html";
+        }
+        function goToaccount() {
+            // Redirect to the homepage
+            window.location.href = "userprofile.html";
+        }
+
+function gotowishlist() {
+    window.location.href = "ecommercewishlist.html";
+}
+function goTocart() {
+            // Redirect to the homepage
+            window.location.href = "ecommercecart.html";
+        }
+
+        
+        </script>
+
+
+
+
+
+
+
+
+    
+    <ul class="navbar" id="navbar">
+        <li><a href="ecommercewebsite.html">home</a></li>
+        <div class="threebuttons">
+            <li><a href="signin.html">sign up</a></li>
+            <li><a href="products.html">products</a></li>
+            <li><a href="userprofile.html">account</a></li>
+            <li><a href="support.html">support</a></li>
+            <li><a href="support.html">about us</a></li>
+            <li><a href="ecommerceorders.html">orders</a></li>
+
+        </div>
+    </ul>
+
+
+
+
+
+    <div class="profile-frame">
+        <h1 class="title">User Profile</h1>
+        <div class="profile-info">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" value="John" readonly style="cursor: not-allowed;">
+        </div>
+        <div class="profile-info">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" value="Doe" readonly style="cursor: not-allowed;">
+        </div>
+        <div class="profile-info">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="text" id="phoneNumber" value="1234567890">
+        </div>
+        <div class="profile-info">
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" class="editable">
+        </div>
+        <div class="profile-info">
+            <label for="email">Email:</label>
+            <input type="email" id="email" value="john@example.com" readonly style="cursor: not-allowed;">
+        </div>
+        <div class="profile-info">
+            <label for="address">Address:</label>
+            <input type="text" id="address" value="123 Main St, City, Country" readonly style="cursor: not-allowed;">
+        </div>
+        <button id="editButton" class="btn" onclick="toggleEdit()">Edit Profile</button>
+    </div>
+
+    <script>
+        function toggleEdit() {
+            var phoneNumberInput = document.getElementById('phoneNumber');
+            var birthdayInput = document.getElementById('birthday');
+            var editButton = document.getElementById('editButton');
+            
+            phoneNumberInput.classList.toggle('editable');
+            birthdayInput.classList.toggle('editable');
+
+            if (editButton.textContent === 'Edit Profile') {
+                editButton.textContent = 'Saved';
+            } else {
+                editButton.textContent = 'Edit Profile';
+            }
+        }
+
+
+
+
+           // JavaScript to toggle the sidebar
+           const menuIcon = document.getElementById('menu-icon');
+        const navbar = document.getElementById('navbar');
+        const content = document.getElementById('content');
+
+        menuIcon.addEventListener('click', () => {
+            navbar.classList.toggle('show');
+            content.classList.toggle('shifted');
+        });
+    </script>
+</body>
+
+</html>
